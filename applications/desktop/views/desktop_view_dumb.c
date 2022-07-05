@@ -7,7 +7,7 @@
 #include <dolphin/dolphin.h>
 
 #include "../desktop_i.h"
-#include "desktop_view_dumb.h"
+#include "desktop_view_main.h"
 
 struct DesktopDumbView {
     View* view;
@@ -16,11 +16,11 @@ struct DesktopDumbView {
     TimerHandle_t poweroff_timer;
 };
 
-#define DESKTOP_DUMB_VIEW_POWEROFF_TIMEOUT 5000
+#define DESKTOP_MAIN_VIEW_POWEROFF_TIMEOUT 5000
 
-static void desktop_dumb_poweroff_timer_callback(TimerHandle_t timer) {
+static void desktop_main_poweroff_timer_callback(TimerHandle_t timer) {
     DesktopDumbView* dumb_view = pvTimerGetTimerID(timer);
-    dumb_view->callback(DesktopDumbEventOpenPowerOff, dumb_view->context);
+    dumb_view->callback(DesktopMainEventOpenPowerOff, dumb_view->context);
 }
 
 void desktop_dumb_set_callback(
@@ -46,23 +46,23 @@ bool desktop_dumb_input(InputEvent* event, void* context) {
 
     if(event->type == InputTypeShort) {
         if(event->key == InputKeyOk) {
-            dumb_view->callback(DesktopDumbEventOpenMenu, dumb_view->context);
+            dumb_view->callback(DesktopMainEventOpenMenu, dumb_view->context);
         } else if(event->key == InputKeyUp) {
-            dumb_view->callback(DesktopDumbEventOpenLockMenu, dumb_view->context);
+            dumb_view->callback(DesktopMainEventOpenLockMenu, dumb_view->context);
         } else if(event->key == InputKeyDown) {
-            dumb_view->callback(DesktopDumbEventOpenArchive, dumb_view->context);
+            dumb_view->callback(DesktopMainEventOpenArchive, dumb_view->context);
         } else if(event->key == InputKeyLeft) {
-            dumb_view->callback(DesktopDumbEventOpenFavoritePrimary, dumb_view->context);
+            dumb_view->callback(DesktopMainEventOpenFavoritePrimary, dumb_view->context);
         } else if(event->key == InputKeyRight) {
-            dumb_view->callback(DesktopDumbEventOpenPassport, dumb_view->context);
+            dumb_view->callback(DesktopMainEventOpenPassport, dumb_view->context);
         }
     } else if(event->type == InputTypeLong) {
         if(event->key == InputKeyDown) {
-            dumb_view->callback(DesktopDumbEventOpenDebug, dumb_view->context);
+            dumb_view->callback(DesktopMainEventOpenDebug, dumb_view->context);
         } else if(event->key == InputKeyLeft) {
-            dumb_view->callback(DesktopDumbEventOpenFavoriteSecondary, dumb_view->context);
+            dumb_view->callback(DesktopMainEventOpenFavoriteSecondary, dumb_view->context);
         } else if(event->key == InputKeyUp) {
-            dumb_view->callback(DesktopDumbEventOpenFavoriteGame, dumb_view->context);
+            dumb_view->callback(DesktopMainEventOpenFavoriteGame, dumb_view->context);
         } else if (event->key == InputKeyOk) {
             dumb_view->callback(DesktopAnimationEventNewIdleAnimation, dumb_view->context);
         }
@@ -72,7 +72,7 @@ bool desktop_dumb_input(InputEvent* event, void* context) {
         if(event->type == InputTypePress) {
             xTimerChangePeriod(
                 dumb_view->poweroff_timer,
-                pdMS_TO_TICKS(DESKTOP_DUMB_VIEW_POWEROFF_TIMEOUT),
+                pdMS_TO_TICKS(DESKTOP_MAIN_VIEW_POWEROFF_TIMEOUT),
                 portMAX_DELAY);
         } else if(event->type == InputTypeRelease) {
             xTimerStop(dumb_view->poweroff_timer, portMAX_DELAY);
@@ -92,10 +92,10 @@ DesktopDumbView* desktop_dumb_alloc() {
 
     dumb_view->poweroff_timer = xTimerCreate(
         NULL,
-        pdMS_TO_TICKS(DESKTOP_DUMB_VIEW_POWEROFF_TIMEOUT),
+        pdMS_TO_TICKS(DESKTOP_MAIN_VIEW_POWEROFF_TIMEOUT),
         pdFALSE,
         dumb_view,
-        desktop_dumb_poweroff_timer_callback);
+        desktop_main_poweroff_timer_callback);
 
     return dumb_view;
 }

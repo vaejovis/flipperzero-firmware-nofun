@@ -39,15 +39,15 @@ typedef enum {
 
 
     // TESTING DUMB MODE THIS DOESN'T WORK YET
-    DesktopDumbEventOpenLockMenu,
-    DesktopDumbEventOpenArchive,
-    DesktopDumbEventOpenFavoritePrimary,
-    DesktopDumbEventOpenFavoriteSecondary,
-    DesktopDumbEventOpenFavoriteGame,
-    DesktopDumbEventOpenMenu,
-    DesktopDumbEventOpenDebug,
-    DesktopDumbEventOpenPassport, /**< Broken, don't use it */
-    DesktopDumbEventOpenPowerOff,
+    //DesktopDumbEventOpenLockMenu,
+    //DesktopDumbEventOpenArchive,
+    //DesktopDumbEventOpenFavoritePrimary,
+    //DesktopDumbEventOpenFavoriteSecondary,
+    //DesktopDumbEventOpenFavoriteGame,
+    //DesktopDumbEventOpenMenu,
+    //DesktopDumbEventOpenDebug,
+    //DesktopDumbEventOpenPassport, /**< Broken, don't use it */
+    //DesktopDumbEventOpenPowerOff,
 
     // Global events
     DesktopGlobalBeforeAppStarted,
