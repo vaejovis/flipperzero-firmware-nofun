@@ -18,7 +18,6 @@ App(
     apptype=FlipperAppType.METAPACKAGE,
     provides=[
         "gpio",
-        "ibutton",
         "infrared",
         "lfrfid",
         "nfc",
@@ -48,12 +47,8 @@ App(
     name="Custom applications for games menu",
     apptype=FlipperAppType.METAPACKAGE,
     provides=[
-        "game_2048",
         "arkanoid_game",
         "dice_game",
-        "flappy_game",
-        "gameoflife_game",
-        "raycast_game",
         "snake_game",
         "tanks_game",
         "tetris_game",

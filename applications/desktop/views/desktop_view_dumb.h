@@ -20,21 +20,21 @@ void desktop_Dumb_free(DesktopDumbView* Dumb_view);
 
 typedef struct DesktopViewDumb DesktopViewDumb;
 
-typedef void (*DesktopViewDumbCallback)(DesktopEvent event, void* context);
+//def void (*DesktopViewDumbCallback)(DesktopEvent event, void* context);
 
-void desktop_view_Dumb_set_callback(
-    DesktopViewDumb* dumb_view,
-    DesktopViewDumbCallback callback,
-    void* context);
-void desktop_view_dumb_update(DesktopViewDumb* dumb_view);
-View* desktop_view_dumb_get_view(DesktopViewDumb* dumb_view);
-DesktopViewDumb* desktop_view_Dumb_alloc();
-void desktop_view_dumb_free(DesktopViewDumb* dumb_view);
-void desktop_view_dumb_lock(DesktopViewDumb* dumb_view, bool pin_dumb);
-void desktop_view_dumb_unlock(DesktopViewDumb* dumb_view);
-void desktop_view_dumb_close_doors(DesktopViewDumb* dumb_view);
+//void desktop_view_Dumb_set_callback(
+//    DesktopViewDumb* dumb_view,
+//    DesktopViewDumbCallback callback,
+//    void* context);
+//void desktop_view_dumb_update(DesktopViewDumb* dumb_view);
+//View* desktop_view_dumb_get_view(DesktopViewDumb* dumb_view);
+//DesktopViewDumb* desktop_view_Dumb_alloc();
+//void desktop_view_dumb_free(DesktopViewDumb* dumb_view);
+//void desktop_view_dumb_lock(DesktopViewDumb* dumb_view, bool pin_dumb);
+//void desktop_view_dumb_unlock(DesktopViewDumb* dumb_view);
+//void desktop_view_dumb_close_doors(DesktopViewDumb* dumb_view);
 
-//* 
+//
 //
 //Attempted implementation of dumb mode.
 //
